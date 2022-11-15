@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -86,8 +87,7 @@ public class BannerView extends LinearLayout {
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
             View view = LayoutInflater.from(context).inflate(R.layout.item_viewpager_card, container, false);
-            TextView tv = view.findViewById(R.id.tv_card);
-            tv.setText(data.get(position));
+            ImageView tv = view.findViewById(R.id.img_banner);
             view.setBackgroundColor(ColorUtils.getRandomColor());
             container.addView(view);
             return view;

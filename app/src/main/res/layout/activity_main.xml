@@ -5,13 +5,13 @@
 
     <com.caowei.utowndemo.view.StickyNestedScrollView
         android:id="@+id/scroll_view"
-        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants"
+        android:fillViewport="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:fillViewport="true">
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,13 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="1" />
-            </LinearLayout>
+                android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,28 +31,47 @@
                 <LinearLayout
                     android:id="@+id/title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
 
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_space"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Space" />
-
-                    <Button
-                        android:id="@+id/btn_now"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Now" />
-
-                    <Button
+                    <TextView
                         android:id="@+id/btn_reset"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Reset" />
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="24dp"
+                        android:gravity="center"
+                        android:text="Reset"
+                        android:textColor="#E5000000"
+                        android:textFontWeight="700"
+                        android:textSize="18dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/btn_space"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="24dp"
+                        android:gravity="center"
+                        android:text="Space"
+                        android:textColor="#E5000000"
+                        android:textFontWeight="700"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/btn_now"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="24dp"
+                        android:gravity="center"
+                        android:text="Now"
+                        android:textColor="#99000000"
+                        android:textFontWeight="600"
+                        android:textSize="18dp" />
+
+
                 </LinearLayout>
 
                 <androidx.viewpager2.widget.ViewPager2

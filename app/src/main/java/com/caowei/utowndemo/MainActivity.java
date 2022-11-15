@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnSpace = findViewById(R.id.btn_space);
-        Button btnNow = findViewById(R.id.btn_now);
-
+        TextView btnSpace = findViewById(R.id.btn_space);
+        TextView btnNow = findViewById(R.id.btn_now);
+        TextView btnReset = findViewById(R.id.btn_reset);
         btnSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         });
         StickyNestedScrollView scrollView = findViewById(R.id.scroll_view);
         scrollView.setStickyPin(true);
+        scrollView.setOnStickyListener(new StickyNestedScrollView.OnStickyListener() {
+            @Override
+            public void onSticky(View view, float state) {
+                if (state == 1){
+                    btnReset.setVisibility(View.VISIBLE);
+                }else{
+                    btnReset.setVisibility(View.GONE);
+                }
+            }
+        });
         SpaceFragment spaceFragment = new SpaceFragment();
         NowFragment nowFragment = new NowFragment();
         List<Fragment> fragments = new ArrayList<>();

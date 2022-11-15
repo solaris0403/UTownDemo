@@ -1,13 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:text="1" />
+    <FrameLayout
+        android:id="@+id/placeholder_left"
+        android:layout_width="16dp"
+        android:layout_height="1dp" />
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<!--        <FrameLayout-->
+<!--            android:id="@+id/placeholder_top"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="16dp" />-->
+
+        <RelativeLayout
+            android:id="@+id/container"
+            android:layout_width="292dp"
+            android:layout_height="84dp">
+            <RelativeLayout
+                android:id="@+id/left"
+                android:layout_width="112dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:id="@+id/img_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="28dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="11" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/left">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:text="AAAAAAAAAAAAAAAAAAAdddddddA"
+                    android:textColor="#000000"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="4dp"
+                    android:lineHeight="10dp"
+                    android:text="Live space"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/img_avatar"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/img_avatar"
+                    android:height="18dp"
+                    android:gravity="center_vertical"
+                    android:lines="1"
+                    android:text="Nimble" />
+
+                <TextView
+                    android:id="@+id/btn_enter"
+                    android:layout_width="51dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="#1AE90E09"
+                    android:gravity="center"
+                    android:text="Enter"
+                    android:textColor="#E90E09"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/placeholder_right"-->
+<!--        android:layout_width="16dp"-->
+<!--        android:layout_height="1dp" />-->
+</LinearLayout>

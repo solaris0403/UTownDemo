@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.caowei.utowndemo.lib.ColorUtils;
 import com.caowei.utowndemo.R;
+import com.caowei.utowndemo.lib.utils.SizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,25 +56,18 @@ public class SingleView extends LinearLayout {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        SingleAdapter singleAdapter = new SingleAdapter(data);
+        SingleAdapter singleAdapter = new SingleAdapter(getContext(), data);
         recyclerView.setAdapter(singleAdapter);
     }
 
     private static class SingleAdapter extends RecyclerView.Adapter<SingleAdapter.ViewHolder> {
         private final List<String> data = new ArrayList<>();
+        private Context context;
 
-        public SingleAdapter(List<String> data) {
+        public SingleAdapter(Context context, List<String> data) {
+            this.context = context;
             this.data.clear();
             this.data.addAll(data);
-        }
-
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-            public final TextView textView;
-
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                textView = itemView.findViewById(R.id.tv_content);
-            }
         }
 
 
@@ -86,6 +80,14 @@ public class SingleView extends LinearLayout {
 
         @Override
         public void onBindViewHolder(@NonNull SingleAdapter.ViewHolder holder, int position) {
+            if (position == 0){
+                holder.placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 16);
+                holder.placeholderLeft.setLayoutParams(holder.placeholderLeft.getLayoutParams());
+            }else{
+                holder.placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 0);
+                holder.placeholderLeft.setLayoutParams(holder.placeholderLeft.getLayoutParams());
+            }
+
             holder.textView.setText(data.get(position));
             holder.textView.setBackgroundColor(ColorUtils.getRandomColor());
         }
@@ -93,6 +95,19 @@ public class SingleView extends LinearLayout {
         @Override
         public int getItemCount() {
             return data.size();
+        }
+
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            public final TextView textView;
+            public View placeholderLeft;
+            public View placeholderRight;
+
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                placeholderLeft = itemView.findViewById(R.id.placeholder_left);
+                placeholderRight = itemView.findViewById(R.id.placeholder_right);
+                textView = itemView.findViewById(R.id.tv_content);
+            }
         }
     }
 }

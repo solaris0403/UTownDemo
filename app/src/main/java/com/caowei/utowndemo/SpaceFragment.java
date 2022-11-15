@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.caowei.utowndemo.space.SpaceRecyclerView;
+
 public class SpaceFragment extends Fragment {
     public static final String TAG = SpaceFragment.class.getSimpleName();
 
@@ -35,5 +37,6 @@ public class SpaceFragment extends Fragment {
                 }, 2000);
             }
         });
+        SpaceRecyclerView recyclerView = view.findViewById(R.id.spaceRecyclerView);
     }
 }

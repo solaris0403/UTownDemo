@@ -4,25 +4,15 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <include
+        layout="@layout/item_view_space_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Multi Title" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Multi SubTitle" />
-    </RelativeLayout>
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/recyclerView" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:overScrollMode="never" />
 </LinearLayout>

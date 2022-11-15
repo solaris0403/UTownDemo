@@ -1,6 +1,8 @@
 package com.caowei.utowndemo.lib.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
 
 /**
  * Created by yanjunhui

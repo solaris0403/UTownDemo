@@ -12,16 +12,19 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.caowei.utowndemo.R;
+import com.caowei.utowndemo.lib.utils.SizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpaceRecyclerView extends RecyclerView {
     private static final String TAG = SpaceRecyclerView.class.getSimpleName();
+
     public SpaceRecyclerView(@NonNull Context context) {
         super(context);
         initViews();
@@ -47,21 +50,24 @@ public class SpaceRecyclerView extends RecyclerView {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position < 4){
+                if (position < 4) {
                     return 2;
-                }else{
+                } else {
                     return 1;
                 }
             }
         });
+
         setLayoutManager(gridLayoutManager);
-        setAdapter(new SpaceAdapter(data));
+        setAdapter(new SpaceAdapter(getContext(), data));
     }
 
-    private static class SpaceAdapter extends Adapter<ViewHolder> {
+    public static class SpaceAdapter extends Adapter<ViewHolder> {
         private List<String> data = new ArrayList<>();
+        private Context context;
 
-        public SpaceAdapter(List<String> data) {
+        public SpaceAdapter(Context context, List<String> data) {
+            this.context = context;
             this.data.clear();
             this.data.addAll(data);
         }
@@ -94,9 +100,23 @@ public class SpaceRecyclerView extends RecyclerView {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            if (holder instanceof CardViewHolder){
-                ((CardViewHolder) holder).textView.setText(data.get(position));
-                ((CardViewHolder) holder).textView.setBackgroundColor(ColorUtils.getRandomColor());
+            if (holder instanceof CardViewHolder) {
+                if (position % 2 == 0) {
+                    ((CardViewHolder) holder).placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 16);
+                    ((CardViewHolder) holder).placeholderLeft.setLayoutParams(((CardViewHolder) holder).placeholderLeft.getLayoutParams());
+                    ((CardViewHolder) holder).placeholderRight.getLayoutParams().width = SizeUtils.dip2px(context, 4);
+                    ((CardViewHolder) holder).placeholderRight.setLayoutParams(((CardViewHolder) holder).placeholderRight.getLayoutParams());
+                    ((CardViewHolder) holder).tvName.setText("ddddddddddddddddddddddddddddddddddddd");
+                }else{
+                    ((CardViewHolder) holder).tvName.setText("dddddddddd");
+                    ((CardViewHolder) holder).placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 4);
+                    ((CardViewHolder) holder).placeholderLeft.setLayoutParams(((CardViewHolder) holder).placeholderLeft.getLayoutParams());
+                    ((CardViewHolder) holder).placeholderRight.getLayoutParams().width = SizeUtils.dip2px(context, 16);
+                    ((CardViewHolder) holder).placeholderRight.setLayoutParams(((CardViewHolder) holder).placeholderRight.getLayoutParams());
+                }
+                ((CardViewHolder) holder).container.setBackgroundColor(ColorUtils.getRandomColor());
+
+
             }
         }
 
@@ -152,16 +172,28 @@ public class SpaceRecyclerView extends RecyclerView {
     }
 
     static class TitleViewHolder extends RecyclerView.ViewHolder {
+        public TextView mTvTitle;
+        public TextView mTvSubtitle;
+
         public TitleViewHolder(@NonNull View itemView) {
             super(itemView);
+            mTvTitle = itemView.findViewById(R.id.tv_title);
+            mTvSubtitle = itemView.findViewById(R.id.tv_subtitle);
         }
     }
 
     static class CardViewHolder extends RecyclerView.ViewHolder {
-        public final TextView textView;
+        public final TextView tvName;
+        public final View placeholderRight;
+        public final View placeholderLeft;
+        public final View container;
+
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.textView);
+            tvName = itemView.findViewById(R.id.tv_name);
+            container = itemView.findViewById(R.id.container);
+            placeholderLeft = itemView.findViewById(R.id.placeholder_left);
+            placeholderRight = itemView.findViewById(R.id.placeholder_right);
         }
     }
 }
