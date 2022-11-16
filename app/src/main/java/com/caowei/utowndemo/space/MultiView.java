@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,13 +15,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.caowei.utowndemo.lib.ColorUtils;
+import com.caowei.utowndemo.utils.ColorUtils;
 import com.caowei.utowndemo.R;
-import com.caowei.utowndemo.lib.utils.SizeUtils;
+import com.caowei.utowndemo.utils.SizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 两行
+ */
 public class MultiView extends LinearLayout {
     public MultiView(Context context) {
         super(context);

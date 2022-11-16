@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 
 import com.caowei.utowndemo.R;
 
+/**
+ * 默认卡片，最底下的
+ */
 public class CardView extends LinearLayout {
     public CardView(Context context) {
         super(context);

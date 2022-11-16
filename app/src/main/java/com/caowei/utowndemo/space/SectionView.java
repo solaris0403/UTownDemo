@@ -10,23 +10,26 @@ import androidx.annotation.Nullable;
 
 import com.caowei.utowndemo.R;
 
-public class TitleView extends LinearLayout {
-    public TitleView(Context context) {
+/**
+ * 标题
+ */
+public class SectionView extends LinearLayout {
+    public SectionView(Context context) {
         super(context);
         initView();
     }
 
-    public TitleView(Context context, @Nullable AttributeSet attrs) {
+    public SectionView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
-    public TitleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SectionView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
 
-    public TitleView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SectionView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initView();
     }
@@ -34,6 +37,6 @@ public class TitleView extends LinearLayout {
 
     private void initView() {
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.item_view_space_title, null);
-        addView(rootView);
+        this.addView(rootView);
     }
 }

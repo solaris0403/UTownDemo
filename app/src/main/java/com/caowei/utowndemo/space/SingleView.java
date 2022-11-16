@@ -1,7 +1,6 @@
 package com.caowei.utowndemo.space;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +14,16 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.caowei.utowndemo.lib.ColorUtils;
+import com.caowei.utowndemo.utils.ColorUtils;
 import com.caowei.utowndemo.R;
-import com.caowei.utowndemo.lib.utils.SizeUtils;
+import com.caowei.utowndemo.utils.SizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 单行
+ */
 public class SingleView extends LinearLayout {
     public SingleView(Context context) {
         super(context);
@@ -45,11 +47,7 @@ public class SingleView extends LinearLayout {
 
     private void initView() {
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.item_view_space_single, null);
-        addView(rootView);
-        initSingleRecyclerView();
-    }
-
-    private void initSingleRecyclerView() {
+        this.addView(rootView);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -82,10 +80,10 @@ public class SingleView extends LinearLayout {
 
         @Override
         public void onBindViewHolder(@NonNull SingleAdapter.ViewHolder holder, int position) {
-            if (position == 0){
+            if (position == 0) {
                 holder.placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 16);
                 holder.placeholderLeft.setLayoutParams(holder.placeholderLeft.getLayoutParams());
-            }else{
+            } else {
                 holder.placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 0);
                 holder.placeholderLeft.setLayoutParams(holder.placeholderLeft.getLayoutParams());
             }

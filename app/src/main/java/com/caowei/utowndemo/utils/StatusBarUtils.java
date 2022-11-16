@@ -1,4 +1,4 @@
-package com.caowei.utowndemo.lib.utils;
+package com.caowei.utowndemo.utils;
 
 import android.app.Activity;
 import android.os.Build;

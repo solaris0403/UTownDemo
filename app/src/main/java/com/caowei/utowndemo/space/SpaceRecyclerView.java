@@ -2,14 +2,12 @@ package com.caowei.utowndemo.space;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -17,7 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.blankj.utilcode.util.ColorUtils;
 import com.caowei.utowndemo.R;
-import com.caowei.utowndemo.lib.utils.SizeUtils;
+import com.caowei.utowndemo.utils.SizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,19 +43,8 @@ public class SpaceRecyclerView extends RecyclerView {
         for (int i = 0; i < 50; i++) {
             data.add(String.valueOf(i));
         }
-        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
-//        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//            @Override
-//            public int getSpanSize(int position) {
-//                if (position < 4) {
-//                    return 2;
-//                } else {
-//                    return 1;
-//                }
-//            }
-//        });
-
-        setLayoutManager(gridLayoutManager);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+        setLayoutManager(layoutManager);
         setAdapter(new SpaceAdapter(getContext(), data));
     }
 
@@ -99,7 +86,7 @@ public class SpaceRecyclerView extends RecyclerView {
                     viewHolder = new MultiViewHolder(new MultiView(parent.getContext()));
                     break;
                 case 4:
-                    viewHolder = new TitleViewHolder(new TitleView(parent.getContext()));
+                    viewHolder = new SectionViewHolder(new SectionView(parent.getContext()));
                     break;
                 default:
                     break;
@@ -181,11 +168,11 @@ public class SpaceRecyclerView extends RecyclerView {
         }
     }
 
-    static class TitleViewHolder extends RecyclerView.ViewHolder {
+    static class SectionViewHolder extends RecyclerView.ViewHolder {
         public TextView mTvTitle;
         public TextView mTvSubtitle;
 
-        public TitleViewHolder(@NonNull View itemView) {
+        public SectionViewHolder(@NonNull View itemView) {
             super(itemView);
             mTvTitle = itemView.findViewById(R.id.tv_title);
             mTvSubtitle = itemView.findViewById(R.id.tv_subtitle);

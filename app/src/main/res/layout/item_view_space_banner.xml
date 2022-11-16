@@ -31,7 +31,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/bg_banner_shadow" />
 
-        <LinearLayout
+        <com.caowei.utowndemo.space.PagerIndicator
             android:id="@+id/banner_indicator"
             android:layout_width="match_parent"
             android:layout_height="12dp"

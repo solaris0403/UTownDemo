@@ -1,12 +1,10 @@
-package com.caowei.utowndemo.lib;
+package com.caowei.utowndemo.utils;
 
 import android.graphics.Color;
 import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
 import androidx.annotation.FloatRange;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 /**
  * <pre>

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.blankj.utilcode.util.StringUtils;
 import com.caowei.utowndemo.view.StickyNestedScrollView;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         StickyNestedScrollView scrollView = findViewById(R.id.scroll_view);
-        scrollView.setStickyPin(true);
+        scrollView.setStickyPin(false);
         scrollView.setOnStickyListener(new StickyNestedScrollView.OnStickyListener() {
             @Override
             public void onSticky(View view, float state) {
