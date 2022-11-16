@@ -45,18 +45,17 @@ public class SpaceRecyclerView extends RecyclerView {
         for (int i = 0; i < 50; i++) {
             data.add(String.valueOf(i));
         }
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-            @Override
-            public int getSpanSize(int position) {
-                if (position < 4) {
-                    return 2;
-                } else {
-                    return 1;
-                }
-            }
-        });
+        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+//        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+//            @Override
+//            public int getSpanSize(int position) {
+//                if (position < 4) {
+//                    return 2;
+//                } else {
+//                    return 1;
+//                }
+//            }
+//        });
 
         setLayoutManager(gridLayoutManager);
         setAdapter(new SpaceAdapter(getContext(), data));
@@ -70,6 +69,16 @@ public class SpaceRecyclerView extends RecyclerView {
             this.context = context;
             this.data.clear();
             this.data.addAll(data);
+        }
+
+        @Override
+        public void onViewAttachedToWindow(@NonNull ViewHolder holder) {
+            super.onViewAttachedToWindow(holder);
+            ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
+            if (lp instanceof StaggeredGridLayoutManager.LayoutParams) {
+                StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) lp;
+                params.setFullSpan(holder.getItemViewType() != 0);
+            }
         }
 
         @NonNull
@@ -106,17 +115,18 @@ public class SpaceRecyclerView extends RecyclerView {
                     ((CardViewHolder) holder).placeholderLeft.setLayoutParams(((CardViewHolder) holder).placeholderLeft.getLayoutParams());
                     ((CardViewHolder) holder).placeholderRight.getLayoutParams().width = SizeUtils.dip2px(context, 4);
                     ((CardViewHolder) holder).placeholderRight.setLayoutParams(((CardViewHolder) holder).placeholderRight.getLayoutParams());
-                    ((CardViewHolder) holder).tvName.setText("ddddddddddddddddddddddddddddddddddddd");
-                }else{
-                    ((CardViewHolder) holder).tvName.setText("dddddddddd");
+                } else {
                     ((CardViewHolder) holder).placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 4);
                     ((CardViewHolder) holder).placeholderLeft.setLayoutParams(((CardViewHolder) holder).placeholderLeft.getLayoutParams());
                     ((CardViewHolder) holder).placeholderRight.getLayoutParams().width = SizeUtils.dip2px(context, 16);
                     ((CardViewHolder) holder).placeholderRight.setLayoutParams(((CardViewHolder) holder).placeholderRight.getLayoutParams());
                 }
-                ((CardViewHolder) holder).container.setBackgroundColor(ColorUtils.getRandomColor());
-
-
+                ((androidx.cardview.widget.CardView)((CardViewHolder) holder).cardView).setCardBackgroundColor(ColorUtils.getRandomColor());
+                StringBuilder sb = new StringBuilder("a");
+                for (int i = 0; i < (position % 4) ; i++) {
+                    sb.append("dddddwwwwwwwdd");
+                }
+                ((CardViewHolder) holder).tvName.setText(sb.toString());
             }
         }
 
@@ -187,11 +197,13 @@ public class SpaceRecyclerView extends RecyclerView {
         public final View placeholderRight;
         public final View placeholderLeft;
         public final View container;
+        public final View cardView;
 
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tv_name);
+            tvName = itemView.findViewById(R.id.tv_space_name);
             container = itemView.findViewById(R.id.container);
+            cardView = itemView.findViewById(R.id.card_view);
             placeholderLeft = itemView.findViewById(R.id.placeholder_left);
             placeholderRight = itemView.findViewById(R.id.placeholder_right);
         }

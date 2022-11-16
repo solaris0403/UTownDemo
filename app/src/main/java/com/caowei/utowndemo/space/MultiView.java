@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -86,15 +87,8 @@ public class MultiView extends LinearLayout {
                 holder.placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 0);
             }
             holder.placeholderLeft.setLayoutParams(holder.placeholderLeft.getLayoutParams());
-//
-//            if (position % 2 == 0){
-//                holder.placeholderTop.getLayoutParams().height = SizeUtils.dip2px(context, 0);
-//            }else{
-//                holder.placeholderTop.getLayoutParams().height = SizeUtils.dip2px(context, 16);
-//            }
-//            holder.placeholderTop.setLayoutParams(holder.placeholderTop.getLayoutParams());
 
-            holder.container.setBackgroundColor(ColorUtils.getRandomColor());
+            holder.cardView.setCardBackgroundColor(ColorUtils.getRandomColor());
         }
 
         @Override
@@ -104,13 +98,13 @@ public class MultiView extends LinearLayout {
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public View placeholderLeft;
-            public View placeholderTop;
             public View container;
+            public CardView cardView;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 container = itemView.findViewById(R.id.container);
-//                placeholderTop = itemView.findViewById(R.id.placeholder_top);
+                cardView = itemView.findViewById(R.id.card_view);
                 placeholderLeft = itemView.findViewById(R.id.placeholder_left);
             }
         }

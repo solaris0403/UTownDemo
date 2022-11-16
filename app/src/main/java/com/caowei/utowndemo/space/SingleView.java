@@ -1,6 +1,7 @@
 package com.caowei.utowndemo.space;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -87,9 +89,8 @@ public class SingleView extends LinearLayout {
                 holder.placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 0);
                 holder.placeholderLeft.setLayoutParams(holder.placeholderLeft.getLayoutParams());
             }
-
-            holder.textView.setText(data.get(position));
-            holder.textView.setBackgroundColor(ColorUtils.getRandomColor());
+            holder.spaceCover.setBackgroundColor(ColorUtils.getRandomColor());
+//            holder.content.setBackgroundColor(Color.WHITE);
         }
 
         @Override
@@ -98,15 +99,19 @@ public class SingleView extends LinearLayout {
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            public final TextView textView;
+            public final CardView cardView;
             public View placeholderLeft;
             public View placeholderRight;
+            public TextView content;
+            public View spaceCover;
 
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 placeholderLeft = itemView.findViewById(R.id.placeholder_left);
                 placeholderRight = itemView.findViewById(R.id.placeholder_right);
-                textView = itemView.findViewById(R.id.tv_content);
+                cardView = itemView.findViewById(R.id.card_view);
+                content = itemView.findViewById(R.id.content);
+                spaceCover = itemView.findViewById(R.id.lyt_space_cover);
             }
         }
     }

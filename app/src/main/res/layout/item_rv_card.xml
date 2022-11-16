@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -11,14 +12,209 @@
 
     <RelativeLayout
         android:layout_width="214dp"
-        android:layout_height="270dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_centerInParent="true"
-            android:id="@+id/tv_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="1" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="208dp"
+            android:layout_height="270dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            app:cardBackgroundColor="#FFFFFFFF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/lyt_space_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="156dp">
+
+                    <ImageView
+                        android:id="@+id/img_space_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/img_lt_icon_flag"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="8dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icon_discover_item_flag" />
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="18dp">
+
+                            <ImageView
+                                android:layout_width="96dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/bg_discover_item_rectangle" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="Live space wow"
+                                android:textColor="#FFFFFFFF"
+                                android:textFontWeight="600"
+                                android:textSize="10dp" />
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="53dp"
+                            android:layout_height="match_parent"
+                            android:alpha="0.5"
+                            android:src="@drawable/bg_discover_item_person" />
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="4dp"
+                            android:src="@drawable/icon_discover_item_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="18dp"
+                            android:gravity="center_vertical"
+                            android:text="23.5k"
+                            android:textColor="#FFFFFFFF"
+                            android:textFontWeight="400"
+                            android:textSize="12dp" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_space_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="26dp"
+                        android:layout_marginRight="12dp"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="WorldChampGaming Warzone"
+                        android:textColor="#B2000000"
+                        android:textFontWeight="600"
+                        android:textSize="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="24dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/img_space_avatar"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginRight="4dp"
+                            android:src="@drawable/icon_default_avatar" />
+
+                        <TextView
+                            android:id="@+id/tv_space_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="Leo Ding"
+                            android:textColor="#99000000"
+                            android:textFontWeight="400"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="51dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_discover_item_enter"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="Enter"
+                        android:textColor="#FFE90E09"
+                        android:textFontWeight="600"
+                        android:textSize="12dp" />
+
+                </FrameLayout>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="156dp"
+            android:elevation="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="6dp"
+                android:layout_height="4dp"
+                android:src="@drawable/bg_discover_belt_angle" />
+
+            <TextView
+                android:id="@+id/tv_belt"
+                android:layout_width="198dp"
+                android:layout_height="22dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/bg_discover_belt"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="8dp"
+                android:scaleType="fitXY"
+                android:shadowColor="#00ffffff"
+                android:text="WEEKEND SPECIAL TIMEoooooooooo"
+                android:textColor="#E5FFFFFF"
+                android:textFontWeight="700"
+                android:textSize="10dp" />
+        </LinearLayout>
     </RelativeLayout>
 
     <FrameLayout
