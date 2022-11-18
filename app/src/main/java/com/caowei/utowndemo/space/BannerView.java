@@ -1,6 +1,7 @@
 package com.caowei.utowndemo.space;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,13 +20,17 @@ import com.caowei.utowndemo.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 顶部Banner
  */
 public class BannerView extends LinearLayout {
     private static final String TAG = BannerView.class.getSimpleName();
-
+    private Timer mTimer;
+    private TimerTask mTimerTask;
+    private ViewPager viewPager;
     public BannerView(Context context) {
         super(context);
         initView();
@@ -53,7 +58,7 @@ public class BannerView extends LinearLayout {
         for (int i = 0; i < 10; i++) {
             data.add(String.valueOf(i));
         }
-        ViewPager viewPager = findViewById(R.id.viewPager);
+        viewPager = findViewById(R.id.viewPager);
         PagerIndicator pagerIndicator = findViewById(R.id.banner_indicator);
         pagerIndicator.attachViewPager(viewPager);
         BannerAdapter adapter = new BannerAdapter(getContext(), data);
@@ -64,6 +69,28 @@ public class BannerView extends LinearLayout {
                 Log.d(TAG, "onClick:" + position);
             }
         });
+        viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+//                start();
+            }
+        });
+//        start();
+    }
+
+    private void start(){
+        mTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+                autoPage();
+            }
+        };
+    }
+
+    private void autoPage(){
+        int position = (viewPager.getCurrentItem() + 1) % viewPager.getAdapter().getCount();
+        viewPager.setCurrentItem(position, true);
     }
 
     private static class BannerAdapter extends PagerAdapter {

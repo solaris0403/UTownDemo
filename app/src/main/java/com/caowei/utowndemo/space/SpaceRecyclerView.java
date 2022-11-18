@@ -1,7 +1,9 @@
 package com.caowei.utowndemo.space;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -25,26 +27,29 @@ public class SpaceRecyclerView extends RecyclerView {
 
     public SpaceRecyclerView(@NonNull Context context) {
         super(context);
-        initViews();
+        initView();
     }
 
     public SpaceRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initViews();
+        initView();
     }
 
     public SpaceRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initViews();
+        initView();
     }
 
-    private void initViews() {
+    private void initView() {
         List<String> data = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             data.add(String.valueOf(i));
         }
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+        layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        addItemDecoration(new SpaceItemDecoration(getContext()));
         setLayoutManager(layoutManager);
+        setHasFixedSize(true);
         setAdapter(new SpaceAdapter(getContext(), data));
     }
 
@@ -97,21 +102,14 @@ public class SpaceRecyclerView extends RecyclerView {
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             if (holder instanceof CardViewHolder) {
-                if (position % 2 == 0) {
-                    ((CardViewHolder) holder).placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 16);
-                    ((CardViewHolder) holder).placeholderLeft.setLayoutParams(((CardViewHolder) holder).placeholderLeft.getLayoutParams());
-                    ((CardViewHolder) holder).placeholderRight.getLayoutParams().width = SizeUtils.dip2px(context, 4);
-                    ((CardViewHolder) holder).placeholderRight.setLayoutParams(((CardViewHolder) holder).placeholderRight.getLayoutParams());
-                } else {
-                    ((CardViewHolder) holder).placeholderLeft.getLayoutParams().width = SizeUtils.dip2px(context, 4);
-                    ((CardViewHolder) holder).placeholderLeft.setLayoutParams(((CardViewHolder) holder).placeholderLeft.getLayoutParams());
-                    ((CardViewHolder) holder).placeholderRight.getLayoutParams().width = SizeUtils.dip2px(context, 16);
-                    ((CardViewHolder) holder).placeholderRight.setLayoutParams(((CardViewHolder) holder).placeholderRight.getLayoutParams());
-                }
                 ((androidx.cardview.widget.CardView)((CardViewHolder) holder).cardView).setCardBackgroundColor(ColorUtils.getRandomColor());
                 StringBuilder sb = new StringBuilder("a");
-                for (int i = 0; i < (position % 4) ; i++) {
-                    sb.append("dddddwwwwwwwdd");
+                if ((position % 2) == 0){
+                    sb.append(position + "dddddwww");
+                }else if(position % 2 == 1){
+                    sb.append(position + "dddddwwwwwwwdddddddddddddddwwwwwwwdddddddddddddddwwwwwwwdddddddddddddddwwwwwwwdddddddddddddddwwwwwwwdddddddddd");
+                }else{
+                    sb.append("");
                 }
                 ((CardViewHolder) holder).tvName.setText(sb.toString());
             }
@@ -181,8 +179,8 @@ public class SpaceRecyclerView extends RecyclerView {
 
     static class CardViewHolder extends RecyclerView.ViewHolder {
         public final TextView tvName;
-        public final View placeholderRight;
-        public final View placeholderLeft;
+//        public final View placeholderRight;
+//        public final View placeholderLeft;
         public final View container;
         public final View cardView;
 
@@ -191,8 +189,36 @@ public class SpaceRecyclerView extends RecyclerView {
             tvName = itemView.findViewById(R.id.tv_space_name);
             container = itemView.findViewById(R.id.container);
             cardView = itemView.findViewById(R.id.card_view);
-            placeholderLeft = itemView.findViewById(R.id.placeholder_left);
-            placeholderRight = itemView.findViewById(R.id.placeholder_right);
+//            placeholderLeft = itemView.findViewById(R.id.placeholder_left);
+//            placeholderRight = itemView.findViewById(R.id.placeholder_right);
+        }
+    }
+
+    static class SpaceItemDecoration extends RecyclerView.ItemDecoration{
+        private Context context;
+
+        public SpaceItemDecoration(Context context){
+            this.context = context;
+        }
+
+        @Override
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            int position = parent.getChildAdapterPosition(view);
+            if (position > 3){
+                StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams();
+                int spanIndex = params.getSpanIndex();
+                Log.e(TAG, "getItemOffsets:" + spanIndex);
+                if (spanIndex % 2 == 0 ){
+                    //左边
+                    outRect.left = SizeUtils.dip2px(context, 16);
+                    outRect.right = SizeUtils.dip2px(context, 4);
+                }else{
+                    //右边
+                    outRect.left = SizeUtils.dip2px(context, 4);
+                    outRect.right = SizeUtils.dip2px(context, 16);
+                }
+            }
         }
     }
 }

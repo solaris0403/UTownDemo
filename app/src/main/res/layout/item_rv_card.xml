@@ -61,59 +61,57 @@
                             android:scaleType="fitXY"
                             android:src="@drawable/icon_discover_item_flag" />
 
-                        <FrameLayout
+                        <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="18dp">
-
-                            <ImageView
-                                android:layout_width="96dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/bg_discover_item_rectangle" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:text="Live space wow"
-                                android:textColor="#FFFFFFFF"
-                                android:textFontWeight="600"
-                                android:textSize="10dp" />
-                        </FrameLayout>
-
-
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/shape_bg_space_flag"
+                            android:gravity="center"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="Live space wow"
+                            android:textColor="#FFFFFFFF"
+                            android:textFontWeight="600"
+                            android:textSize="10dp" />
                     </LinearLayout>
 
-                    <FrameLayout
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="8dp"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="8dp"
+                        app:cardBackgroundColor="#4D000000"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="false">
 
-                        <ImageView
-                            android:layout_width="53dp"
-                            android:layout_height="match_parent"
-                            android:alpha="0.5"
-                            android:src="@drawable/bg_discover_item_person" />
-
-                        <ImageView
-                            android:layout_width="12dp"
-                            android:layout_height="12dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="4dp"
-                            android:src="@drawable/icon_discover_item_person" />
-
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="18dp"
-                            android:gravity="center_vertical"
-                            android:text="23.5k"
-                            android:textColor="#FFFFFFFF"
-                            android:textFontWeight="400"
-                            android:textSize="12dp" />
-                    </FrameLayout>
+                            android:orientation="horizontal"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/icon_discover_item_person" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="2dp"
+                                android:gravity="center_vertical"
+                                android:text="23.5k"
+                                android:textColor="#FFFFFFFF"
+                                android:textFontWeight="400"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
                 </FrameLayout>
 
                 <FrameLayout

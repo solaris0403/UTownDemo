@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -34,16 +35,24 @@ public class MainActivity extends AppCompatActivity {
         TextView btnSpace = findViewById(R.id.btn_space);
         TextView btnNow = findViewById(R.id.btn_now);
         TextView btnReset = findViewById(R.id.btn_reset);
+        ImageView imgSpaceSelect = findViewById(R.id.img_space_select);
+        ImageView imgNowSelect = findViewById(R.id.img_now_select);
+        imgSpaceSelect.setVisibility(View.VISIBLE);
+        imgNowSelect.setVisibility(View.GONE);
         btnSpace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(0, true);
+                imgSpaceSelect.setVisibility(View.VISIBLE);
+                imgNowSelect.setVisibility(View.GONE);
             }
         });
         btnNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewPager.setCurrentItem(1, true);
+                imgSpaceSelect.setVisibility(View.GONE);
+                imgNowSelect.setVisibility(View.VISIBLE);
             }
         });
         StickyNestedScrollView scrollView = findViewById(R.id.scroll_view);

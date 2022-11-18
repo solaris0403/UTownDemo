@@ -14,6 +14,7 @@
         android:overScrollMode="never">
 
         <LinearLayout
+            android:background="#00ff00"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -24,9 +25,9 @@
                 android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
-                android:background="#FAFAFA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_discover_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -50,27 +51,53 @@
                         android:textSize="18dp"
                         android:visibility="gone" />
 
-                    <TextView
-                        android:id="@+id/btn_space"
+                    <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="24dp"
-                        android:gravity="center"
-                        android:text="Space"
-                        android:textColor="#E5000000"
-                        android:textFontWeight="700"
-                        android:textSize="18dp" />
+                        android:layout_marginRight="24dp">
 
-                    <TextView
-                        android:id="@+id/btn_now"
+                        <TextView
+                            android:id="@+id/btn_space"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Space"
+                            android:textColor="#E5000000"
+                            android:textFontWeight="700"
+                            android:textSize="18dp" />
+
+                        <ImageView
+                            android:id="@+id/img_space_select"
+                            android:layout_width="20dp"
+                            android:layout_height="4dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icon_discover_tab_indicator" />
+                    </FrameLayout>
+
+                    <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="24dp"
-                        android:gravity="center"
-                        android:text="Now"
-                        android:textColor="#99000000"
-                        android:textFontWeight="600"
-                        android:textSize="18dp" />
+                        android:layout_marginRight="24dp">
+
+                        <TextView
+                            android:id="@+id/btn_now"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Now"
+                            android:textColor="#99000000"
+                            android:textFontWeight="600"
+                            android:textSize="18dp" />
+
+                        <ImageView
+                            android:id="@+id/img_now_select"
+                            android:layout_width="20dp"
+                            android:layout_height="4dp"
+                            android:layout_gravity="bottom|center_horizontal"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/icon_discover_tab_indicator" />
+                    </FrameLayout>
 
 
                 </LinearLayout>
